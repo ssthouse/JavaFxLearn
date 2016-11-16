@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="JavaFxLearn">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaFxLearn</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="supermarket.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="JavaFxLearn.jar">
+        <element id="module-output" name="JavaFxLearn" />
+      </element>
+    </root>
+  </artifact>
+</component>
