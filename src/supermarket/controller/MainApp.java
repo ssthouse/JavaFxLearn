@@ -10,6 +10,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import supermarket.model.Person;
 import supermarket.model.PersonDataManager;
+import supermarket.util.EmailUtil;
 import supermarket.util.PreferUtil;
 
 import java.io.File;
@@ -36,6 +37,9 @@ public class MainApp extends Application {
         initRootLayout();
         showPersonOverview();
         initLocalData();
+        EmailUtil.sendMail(new EmailUtil.EmailBean("ssthouse@163.com", "wssst13886195197",
+                "1194368995@qq.com", "This is subject",
+                "这是一个测试邮件的content"));
     }
 
     private void initLocalData() {

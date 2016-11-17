@@ -92,5 +92,4 @@ public class RootLayoutController {
         PersonDataManager.savePersonsDataToFile(chooseFile, mainApp.getPersonData());
     }
 
-
 }
