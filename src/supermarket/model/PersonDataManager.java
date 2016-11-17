@@ -16,7 +16,7 @@ import java.util.List;
 public class PersonDataManager {
 
 
-    public List<Person> loadPersonsFromFile(File personFile) {
+    public static List<Person> loadPersonsFromFile(File personFile) {
         PersonListWrapper personListWrapper = null;
         try {
             JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
@@ -30,7 +30,7 @@ public class PersonDataManager {
         return personListWrapper.getPersonList();
     }
 
-    public void savePersonsDataToFile(File file, List<Person> personList) {
+    public static void savePersonsDataToFile(File file, List<Person> personList) {
         try {
             JAXBContext context = JAXBContext.newInstance(PersonListWrapper.class);
             Marshaller marshaller = context.createMarshaller();

@@ -12,7 +12,7 @@ public class PreferUtil {
 
     public static final String KEY_FILE_PATH = "filePath";
 
-    public File getPersonFilePath() {
+    public static File getPersonFilePath() {
         Preferences prefer = Preferences.userNodeForPackage(MainApp.class);
         String filePath = prefer.get(KEY_FILE_PATH, null);
         if (filePath == null) {
@@ -21,7 +21,7 @@ public class PreferUtil {
         return new File(filePath);
     }
 
-    public void setPresonFilePath(File personFile) {
+    public static void setPersonFilePath(File personFile) {
         Preferences preferences = Preferences.userNodeForPackage(MainApp.class);
         if (personFile == null) {
             preferences.remove(KEY_FILE_PATH);

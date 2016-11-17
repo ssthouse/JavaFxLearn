@@ -9,8 +9,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import supermarket.model.Person;
+import supermarket.model.PersonDataManager;
+import supermarket.util.PreferUtil;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class MainApp extends Application {
 
@@ -31,6 +35,16 @@ public class MainApp extends Application {
         initSomeData();
         initRootLayout();
         showPersonOverview();
+        initLocalData();
+    }
+
+    private void initLocalData() {
+        File lastOpenFile = PreferUtil.getPersonFilePath();
+        if (lastOpenFile != null) {
+            List<Person> personList = PersonDataManager.loadPersonsFromFile(lastOpenFile);
+            personData.clear();
+            personData.addAll(personList);
+        }
     }
 
 
@@ -111,4 +125,8 @@ public class MainApp extends Application {
     }
 
 
+    public void setPersonData(List<Person> personList) {
+        personData.clear();
+        personData.addAll(personList);
+    }
 }
