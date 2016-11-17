@@ -1,17 +1,22 @@
 package supermarket.controller;
 
+import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.AVObject;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import supermarket.model.Person;
 import supermarket.model.PersonDataManager;
-import supermarket.util.EmailUtil;
 import supermarket.util.PreferUtil;
+import supermarket.view.MainController;
+import supermarket.view.PersonOverviewController;
+import supermarket.view.RootLayoutController;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,8 +27,6 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
-    private RootLayoutController rootLayoutController;
-
     /**
      * The data as an observable list of Persons.
      */
@@ -33,13 +36,35 @@ public class MainApp extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("JavaFxText");
-        initSomeData();
-        initRootLayout();
-        showPersonOverview();
-        initLocalData();
-        EmailUtil.sendMail(new EmailUtil.EmailBean("ssthouse@163.com", "wssst13886195197",
-                "1194368995@qq.com", "This is subject",
-                "这是一个测试邮件的content"));
+        openMainLayout();
+        AVOSCloud.initialize("v8C4cGcNIgHoPlxhxO4CBfco-gzGzoHsz", "KvQzo5VGUpjcrkd4XdN5IgHO", "uuuf1RAzOwqLAVqjrWnCE9Iw");
+        AVObject testObject = new AVObject("TestObject");
+        testObject.put("words", "Hello World!");
+        testObject.save();
+//        initSomeData();
+//        initRootLayout();
+//        showPersonOverview();
+//        initLocalData();
+    }
+
+    private MainController mainController;
+
+    private void openMainLayout() {
+        try {
+            // Load root layout from fxml file.
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(MainApp.class.getResource("../view/Main.fxml"));
+            TabPane tabPane = loader.load();
+            // Show the scene containing the root layout.
+            Scene scene = new Scene(tabPane);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+            mainController = loader.getController();
+            mainController.setMainApp(this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initLocalData() {
@@ -50,7 +75,6 @@ public class MainApp extends Application {
             personData.addAll(personList);
         }
     }
-
 
     public static void main(String[] args) {
         launch(args);
@@ -83,7 +107,7 @@ public class MainApp extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
 
-            rootLayoutController = loader.getController();
+            RootLayoutController rootLayoutController = loader.getController();
             rootLayoutController.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();

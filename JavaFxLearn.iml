@@ -8,5 +8,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mail" level="project" />
+    <orderEntry type="library" name="cn.leancloud:java-sdk:0.1.6" level="project" />
   </component>
 </module>

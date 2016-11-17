@@ -1,9 +1,10 @@
-package supermarket.controller;
+package supermarket.view;
 
 
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.stage.FileChooser;
+import supermarket.controller.MainApp;
 import supermarket.model.Person;
 import supermarket.model.PersonDataManager;
 import supermarket.util.Log;

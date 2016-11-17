@@ -1,11 +1,11 @@
-package supermarket.controller;
+package supermarket.view;
 
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.util.Callback;
 import javafx.util.Pair;
+import supermarket.controller.MainApp;
 import supermarket.model.Person;
 import supermarket.util.DateUtil;
 
