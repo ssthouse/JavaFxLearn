@@ -17,6 +17,8 @@ public class MainApp extends Application {
     private Stage primaryStage;
     private BorderPane rootLayout;
 
+    private RootLayoutController rootLayoutController;
+
     /**
      * The data as an observable list of Persons.
      */
@@ -36,7 +38,7 @@ public class MainApp extends Application {
         launch(args);
     }
 
-    private void initSomeData(){
+    private void initSomeData() {
         // Add some sample data
         personData.add(new Person("Hans", "Muster"));
         personData.add(new Person("Ruth", "Mueller"));
@@ -62,6 +64,9 @@ public class MainApp extends Application {
             Scene scene = new Scene(rootLayout);
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            rootLayoutController = loader.getController();
+            rootLayoutController.setMainApp(this);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,6 +103,7 @@ public class MainApp extends Application {
 
     /**
      * Returns the data as an observable list of Persons.
+     *
      * @return
      */
     public ObservableList<Person> getPersonData() {
